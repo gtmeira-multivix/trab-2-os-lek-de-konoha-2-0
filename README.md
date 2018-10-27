@@ -17,4 +17,4 @@ O trabalho pode ser feito em grupos de até 3 pessoas. Preencha abaixo o nome do
 
 1.  Gabriel Louzada Rabelo - 1711782
 2.  João Victor Lima Bronze Batista - 1711732
-3.  Raphael Louzada Rabelo - 
+3.  Raphael Louzada Rabelo - 1711747
