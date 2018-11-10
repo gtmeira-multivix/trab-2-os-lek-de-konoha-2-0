@@ -8,42 +8,59 @@ struct _arvore {
   Candidato cand;
 };
 
-Arvore* arvore_inserir(Arvore *a, Candidato cand.numero) {
-	if(a == NULL) {
-		Arvore *novo = (Arvore*) malloc(sizeof(Arvore));
+Arvore* arvore_inserir(Arvore *a, Candidato cand) 
+{
+	if(a ==NULL) {
+		Arvore *novo = (Arvore*) malloc (sizeof(Arvore));
 		novo->cand = cand;
-		novo->esquerda = NULL;
+		novo->esquerda = NULL;		
 		novo->direita = NULL;
-	return novo;
+		return novo;	
 	}
-	if(cand.numero < a->cand.numero) {
-		a->esquerda = arv_inserir(a->esquerda, cand);
+	
+	if(cand.numero < (a->cand.numero)) {
+		
+		a->esquerda = arvore_inserir(a->esquerda, cand);
 	} else {
-		a->direita = arv_inserir(a->direita, cand);
+		
+		a->direita = arvore_inserir(a->direita, cand);
 	}
 	return a;
 }
 
-Candidato* arvore_buscar(Arvore *a, int cand.numero) {
-	if(a == NULL || a->cand.numero == cand.numero) {
-		return a;
+Candidato* arvore_buscar(Arvore *a, int candNumero) {
+
+	if(a == NULL) {
+		return NULL;
 	}
-	if(cand.numero < a->cand.numero) {
-		return arv_buscar(a->esquerda, cand.numero);
-	} else {
-		return arv_buscar(a->direita, cand.numero);
+
+	if(a->cand.numero == candNumero) {
+		printf(" %s ", a->cand.nome);
+		printf("-- %s \n\n", a->cand.cargo);
+		return &a->cand;
+	}
+
+	if(candNumero < (a->cand.numero)) {
+		return arvore_buscar(a->esquerda, candNumero);
+
+	} else  {
+
+		return arvore_buscar(a->direita, candNumero);
 	}
 }
 
 void arvore_imprime_em_ordem(Arvore *a) {
-	if(a->direita != NULL) {
-		arv_imprimir(a->direita);
-	}
-	printf("%lf\n", a->cand.numero);
-	printf("%lf\n", a->cand.nome);
-	printf("lf\n", a->cand.cargo);
-	
+
+	printf("%d ", a->cand.numero);
+	printf("%s ", a->cand.nome);
+	printf("--%s\n", a->cand.cargo);
+
 	if(a->esquerda != NULL) {
-		arv_imprimir(a->esquerda);
+
+		arvore_imprime_em_ordem(a->esquerda);
+	}
+
+	if(a->direita != NULL) {
+		arvore_imprime_em_ordem(a->direita);
 	}
 }
